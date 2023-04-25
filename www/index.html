@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src https://codepush.appcenter.ms 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="css/99.css">
+        <link rel="stylesheet" href="css/w3.css">
+        <!-- <script src="js/PhoneDialer.js"></script> -->
+        <!-- <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script> -->
+        <title>POLICE 2022</title>
+
+            <style>
+            .city {display:none}
+            </style>
+
+            <style>
+                body {background-color:#ffffff}
+                h1    {color:#0078d7}
+                h4    {color:#0078d7}
+                h3    {color:#0078d7}
+            </style>
+
+
+    </head>
+
+    <body>
+
+<br><br><br><br>
+
+
+
+<form  class="w3-container   w3-text-blue w3-margin">
+    <p align="center">
+        <img border="" alt="Cecret Codes for Android" src="itlogo.jpg" width="130" height="130">
+      </p>
+    <h2 class="w3-center">Login</h2>
+     
+
+<div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+        <div class="w3-rest">
+          <input id="email" class="w3-input w3-border" name="email" type="email" placeholder="Email">
+        </div>
+    </div>
+    
+    <div class="w3-row w3-section">
+      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
+        <div class="w3-rest">
+          <input id="password" class="w3-input w3-border" name="message" type="password" placeholder="password">
+        </div>
+    </div>
+    
+   
+    
+    </form>
+ <button id="loginButton" class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding w3-round-xxlarge">login</button>
+    </body>
+
+
+<br>
+
+
+</center>
+
+<footer class="w3-container w3-bottom w3-theme w3-margin-top">
+<center>
+            <div id="deviceready" class="blink" style="width: 100%;">
+            <p class="event listening"id="status"></p>
+            <p class="event received">Server Connected</p>
+            <!-- Message: <p id="status"></p> -->
+
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // var url = "http://localhost:8888/cordova_login/auth.php";
+        var url = "https://teamxdevelopers.com/app/cordovalogin/auth.php";
+       
+        
+        $("#loginButton").click(function(){
+            var email= $.trim($("#email").val());
+            var password= $.trim($("#password").val());
+
+            $("#status").text("Authenticating...");
+            var loginString ="email="+email+"&password="+password+"&login=";
+            $.ajax({
+                type: "POST",crossDomain: true, cache: false,
+                url: url,
+                data: loginString,
+                success: function(data){
+                    
+                    if(data == "success") {
+                        $("#status").text("Login Success..!");
+                        
+                        localStorage.loginstatus = "true";
+                        window.location.href = "welcome.html";
+                    }
+                    else if(data == "error")
+                    {
+                        $("#status").text("Login Failed..!");
+                    }
+                }
+            });
+        });
+
+        $("#registerButton").click(function(){
+            var email= $.trim($("#email").val());
+            var password= $.trim($("#password").val());
+
+            $("#status").text("Creating New Account...");
+            var dataString="email="+email+"&password="+password+"&register=";
+            $.ajax({
+                type: "POST",crossDomain: true, cache: false,
+                url: url,
+                data: dataString,
+                success: function(data){
+                    if(data == "success")
+                        $("#status").text("Registered success");
+                    else if( data == "exist")
+                        $("#status").text("Account is already there");
+                    else if(data == "error")
+                        $("#status").text("Register Failed");
+                }
+            });
+        });
+    });
+</script>
+
+</html>
